@@ -1,0 +1,14 @@
+- hosts: junos
+  gather_facts: no
+
+  tasks:
+    - name: config test
+      junos_config:
+        src: template_ntp_junos.txt
+  vars:
+    ntp_servers:
+      - 10.0.1.123
+      - 10.0.2.123
+      - 10.0.3.123
+      - 10.0.4.123
+      - 10.0.5.123

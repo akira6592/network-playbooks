@@ -1,0 +1,3 @@
+{% for n in ntp_servers %}
+set system ntp server {{ n }}
+{% endfor %}
