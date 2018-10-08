@@ -24,3 +24,6 @@ ok: [172.16.0.1] => {
 PLAY RECAP ********************************************************************
 172.16.0.1                 : ok=2    changed=0    unreachable=0    failed=0
 ```
+
+# デモ動画
+https://www.youtube.com/watch?v=pBhnsvKeZeU
