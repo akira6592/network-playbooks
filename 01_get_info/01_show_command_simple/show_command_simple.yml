@@ -1,0 +1,13 @@
+- hosts: junos
+  gather_facts: no
+
+  tasks:
+    - name: show command test
+      junos_command:
+        commands:
+          - show version
+      register: result
+
+    - name: debug output
+      debug:
+        msg: "{{ result.stdout_lines[0] }}"
