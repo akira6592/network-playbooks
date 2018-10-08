@@ -1,0 +1,8 @@
+- hosts: junos
+  gather_facts: no
+
+  tasks:
+    - name: config test
+      junos_config:
+        lines:
+          - set system ntp server 10.0.0.123
