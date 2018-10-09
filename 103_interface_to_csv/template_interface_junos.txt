@@ -1,0 +1,4 @@
+"INTERFACE","ADMIN_STATE","LINK_STATUS","HARDWARE_TYPE"
+{% for r in parsed_result %}
+"{{ r['INTERFACE'] }}","{{ r['ADMIN_STATE'] }}","{{ r['LINK_STATUS'] }}","{{ r['HARDWARE_TYPE'] }}"
+{% endfor %}
