@@ -12,4 +12,4 @@
         src: "./template_interface_junos.txt"
         dest: "./result_interface.csv"
       vars:
-      　　parsed_result: "{{ result.stdout[0] | parse_cli_textfsm('juniper_junos_show_interfaces.template') }}"
+        parsed_result: "{{ result.stdout[0] | parse_cli_textfsm('juniper_junos_show_interfaces.template') }}"
