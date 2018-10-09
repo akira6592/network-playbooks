@@ -7,6 +7,11 @@ Junos の機器に `show interfaces` コマンドを実行して、結果をパ�
 - `template_interface_junos.txt`: パースした結果を受け取り、CSV に成形する Jinja2 テンプレートファイル
 - `result_interface.csv`: 出力されるCSVファイル
 
+## 追加インストールす
+Playbook 内で使用している [parse_cli_textfsm](https://docs.ansible.com/ansible/latest/user_guide/playbooks_filters.html#network-cli-filters) フィルターはあらかじめ、 textfsm をインストールしておく必要があります。
+`pip install textfsm`
+
+
 
 # 実行例
 ## ansible-playbook コマンド
