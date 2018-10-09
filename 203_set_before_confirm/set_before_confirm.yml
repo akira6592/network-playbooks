@@ -6,7 +6,7 @@
       pause:
         prompt: "continue? [y/N]"
       register: input
-      
+
     - name: abort
       fail:
       when: input.user_input != "y"
