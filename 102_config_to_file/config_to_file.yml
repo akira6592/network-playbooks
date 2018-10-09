@@ -1,6 +1,6 @@
 - hosts: junos
   gather_facts: no
-  
+
   tasks:
     - name: show command test
       junos_command:
