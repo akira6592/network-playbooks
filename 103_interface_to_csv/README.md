@@ -28,8 +28,8 @@ PLAY RECAP *********************************************************************
 ```
 
 ## 保存されたCSV
-[vagrant@centos7 demo]$ cat result_interface.csv
 ```
+[vagrant@centos7 demo]$ cat result_interface.csv
 "INTERFACE","ADMIN_STATE","LINK_STATUS","HARDWARE_TYPE","MTU"
 "ge-0/0/0","Enabled","Up","Ethernet","1514"
 "ge-0/0/0.0","","","","1500"
