@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/akira6592/network-playbooks.svg?style=svg)](https://circleci.com/gh/akira6592/network-playbooks)
+
 # Network Automation sample playbooks
 
 ## `10x_` ディレクトリ
