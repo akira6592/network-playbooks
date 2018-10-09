@@ -1,0 +1,11 @@
+
+version: 2
+jobs:
+  build:
+    docker:
+      - image: akira6592/ansible:latest
+    steps:
+      - checkout
+      - run:
+          name: ansible-lint
+          command: "find  ./ -name '*.yml' | xargs ansible-lint"
