@@ -8,5 +8,5 @@ jobs:
       - checkout
       - run:
           name: ansible-lint
-          #command: "find  ./ -name '*.yml' | xargs ansible-lint"
-          command: "find  ./ -name '*.yml' "
+          command: "find  ./{1,2}* -name '*.yml' | xargs ansible-lint"
+
