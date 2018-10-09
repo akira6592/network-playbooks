@@ -1,0 +1,17 @@
+- hosts: junos
+  gather_facts: no
+
+  tasks:
+    - name: confirm
+      pause:
+        prompt: "continue? [y/N]"
+      register: input
+      
+    - name: abort
+      fail:
+      when: input.user_input != "y"
+
+    - name: config test
+      junos_config:
+        lines:
+          - set system ntp server 10.0.0.123
