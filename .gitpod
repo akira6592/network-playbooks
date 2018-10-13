@@ -1,3 +1,2 @@
-image: akira6592/ansible
-# tasks:
-#   - command: "pip install ansible"
+tasks:
+  - command: "pip install ansible"
