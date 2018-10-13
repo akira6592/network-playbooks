@@ -1,3 +1,3 @@
-image: akira6592:ansible
+image: akira6592/ansible
 # tasks:
 #   - command: "pip install ansible"
