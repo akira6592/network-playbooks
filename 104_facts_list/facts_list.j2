@@ -1,0 +1,5 @@
+"hostname","model","version","serialnum"
+{% for i in groups["ios"]%}
+{% set f = hostvars[i].ansible_facts %}
+"{{ f.net_hostname }}","{{ f.net_model }}","{{ f.net_version }}","{{ f.net_serialnum }}"
+{% endfor %}
