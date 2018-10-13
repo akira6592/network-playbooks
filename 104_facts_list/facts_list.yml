@@ -2,7 +2,7 @@
   gather_facts: no
 
   tasks:
-    - name: 
+    - name: facts
       ios_facts:
         gather_subset: hardware
 
