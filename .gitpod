@@ -1,1 +1,2 @@
-
+tasks:
+  - command: "pip install ansible"
