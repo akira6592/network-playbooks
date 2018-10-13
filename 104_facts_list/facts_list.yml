@@ -1,0 +1,16 @@
+- hosts: ios
+  gather_facts: no
+
+  tasks:
+    - name: 
+      ios_facts:
+        gather_subset: hardware
+
+    - debug:
+        msg: "{{ ansible_facts }}"
+
+    - name: template
+      template:
+        src: facts_list.j2
+        dest: facts_list.csv
+      run_once: yes
