@@ -11,7 +11,7 @@ Playbook や インベントリファイルを作成せずに、コマンドの�
 ```
 export ANSIBLE_STDOUT_CALLBACK=json
 export ANSIBLE_LOAD_CALLBACK_PLUGINS=True
-ansible -i ios-xe-mgmt.cisco.com, all \
+ansible -i 172.16.0.2 all \
   -m ios_command -a "commands='show running-config'" \
   -c network_cli -u root -k -e ansible_network_os=ios \
   | jq -r ".plays[0].tasks[0].hosts[].stdout[0]" > ios_config.txt
@@ -21,14 +21,14 @@ ansible -i ios-xe-mgmt.cisco.com, all \
 ```bash
 $ export ANSIBLE_STDOUT_CALLBACK=json
 $ export ANSIBLE_LOAD_CALLBACK_PLUGINS=True
-$ ansible -i ios-xe-mgmt.cisco.com, all \
+$ ansible -i 172.16.0.2, all \
 >   -m ios_command -a "commands='show running-config'" \
 >   -c network_cli -u root -k -e ansible_network_os=ios \
 >   | jq -r ".plays[0].tasks[0].hosts[].stdout[0]" > ios_config.txt
 SSH password:   # パスワードを入力
 ＄
 ＄ cat junos_config.txt   # 保存したコンフィグファイルを表示
-(ansible2700) [vagrant@centos7 techfest]$ cat ios_config.txt
+$ cat ios_config.txt
 Building configuration...
 
 Current configuration : 4356 bytes
