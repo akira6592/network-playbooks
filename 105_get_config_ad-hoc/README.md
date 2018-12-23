@@ -26,9 +26,8 @@ $ ansible -i 172.16.0.2, all \
 >   -c network_cli -u root -k -e ansible_network_os=ios \
 >   | jq -r ".plays[0].tasks[0].hosts[].stdout[0]" > ios_config.txt
 SSH password:   # パスワードを入力
-＄
-＄ cat junos_config.txt   # 保存したコンフィグファイルを表示
-$ cat ios_config.txt
+＄ 
+$ cat ios_config.txt    # 保存したコンフィグファイルを表示
 Building configuration...
 
 Current configuration : 4356 bytes
