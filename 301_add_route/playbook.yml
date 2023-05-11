@@ -21,6 +21,8 @@
     - name: Import configure
       ansible.builtin.import_role:
         name: configure
+      tags:
+        - conigure
 
     # 事後確認
     - name: Import after_check
@@ -29,7 +31,7 @@
       tags:
         - after
 
-    # 管理用（リセット）
+    # ルート削除（管理用）
     - name: Import rest
       ansible.builtin.import_role:
         name: reset
