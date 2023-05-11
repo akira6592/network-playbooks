@@ -4,7 +4,7 @@
 
 1. `before_check` ロール: 追加するルートがまだないことを確認（show ip routeベース）
 1. `configure` ロール: ルートを追加
-1. `after_check` ロール: 追加したルートがあることを確認（show ip routeベース、show running-configuベース）
+1. `after_check` ロール: 追加したルートがあることを確認（show ip routeベース、show running-configベース）
 
 
 # 実行例
