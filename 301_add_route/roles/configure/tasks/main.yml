@@ -1,0 +1,12 @@
+---
+# 実際にルーティングを追加
+- name: Configure Routing
+  cisco.ios.ios_static_routes:
+    config:
+      - address_families:
+          - afi: ipv4
+            routes:
+              - dest: "{{ dest }}"
+                next_hops:
+                  - forward_router_address: "{{ next_hop }}"
+    state: merged

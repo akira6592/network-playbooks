@@ -1,0 +1,13 @@
+---
+argument_specs:
+  main:
+    short_description: The main entry point for the myapp role.
+    options:
+      next_hop:
+        type: str
+        required: true
+        description: The next hop for new routing
+      dest:
+        type: str
+        required: true
+        description: The dest for new routing

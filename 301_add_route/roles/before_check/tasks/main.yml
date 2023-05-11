@@ -1,0 +1,29 @@
+---
+# ユーザー入力値を確認
+- name: Assert parameters
+  ansible.builtin.assert:
+    that:
+      - next_hop is defined
+      - next_hop | ansible.utils.ipv4('address')
+
+# 事前のルーティングテーブルを取得
+- name: Execute show ip route
+  ansible.utils.cli_parse:
+    command: show ip route
+    parser:
+      name: ansible.netcommon.ntc_templates
+  register: res_show_ip_route
+
+# デバッグ表示
+- name: Debug show ip route
+  ansible.builtin.debug:
+    msg: "{{ res_show_ip_route.parsed }}"
+
+# 追加するルートが存在しないこと
+- name: Assert not esxits
+  ansible.builtin.assert:
+    that:
+      - existing_route | length == 0
+  vars:
+    dest_network: "{{ dest | ansible.utils.ipv4('network') }}"
+    existing_route: "{{ res_show_ip_route.parsed | selectattr('network', 'eq', dest_network) }}"

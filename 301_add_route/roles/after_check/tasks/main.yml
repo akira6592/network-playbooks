@@ -1,0 +1,59 @@
+---
+
+###########################################
+# ルーティングテープの確認
+
+# 事後のルーティングテーブルを取得
+- name: Execute show ip route
+  ansible.utils.cli_parse:
+    command: show ip route
+    parser:
+      name: ansible.netcommon.ntc_templates
+  register: res_show_ip_route
+
+# デバッグ表示
+- name: Debug show ip route
+  ansible.builtin.debug:
+    msg: "{{ res_show_ip_route.parsed }}"
+
+# 追加ルートがルーティングテーブルに存在すること
+- name: Assert esxits
+  ansible.builtin.assert:
+    that:
+      - existing_prefix | length == 1
+  vars:
+    dest_network: "{{ dest | ansible.utils.ipv4('network') }}"
+    dest_prefix: "{{ dest | ansible.utils.ipv4('prefix') }}"
+    existing_route: "{{ res_show_ip_route.parsed | selectattr('network', 'eq', dest_network) }}"
+    existing_prefix: "{{ existing_route | selectattr('mask', 'eq', dest_prefix) }}"
+
+# 事後のルーティングテーブルを取得
+- name: Execute show ip route
+  ansible.utils.cli_parse:
+    command: show ip route
+    parser:
+      name: ansible.netcommon.ntc_templates
+  register: res_show_ip_route
+
+###########################################
+# コンフィグの確認
+
+# 事後のルーティングテーブルを取得
+- name: Execute show ip route
+  cisco.ios.ios_command:
+    commands:
+      - show running-config
+  register: res_show_runnning_config
+
+# デバッグ表示
+# - name: Debug show running-config
+#   ansible.builtin.debug:
+#     msg: "{{ res_show_runnning_config }}"
+
+# 追加ルートがコンフィグに存在すること
+- name: Assert esxits
+  ansible.builtin.assert:
+    that:
+      - config in res_show_runnning_config.stdout_lines[0]
+  vars:
+    config: ip route 192.168.99.0 255.255.255.0 10.10.20.254

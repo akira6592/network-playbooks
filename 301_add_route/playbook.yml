@@ -1,0 +1,38 @@
+---
+# スタティックルートのネクストホップを変更
+- name: Test Play
+  hosts: ios
+  gather_facts: false
+
+  vars:
+    # 新しいネクストホップアドレス
+    next_hop: 10.10.20.254
+    dest: 192.168.99.0/24
+
+  tasks:
+    # 事前確認
+    - name: Import before_check
+      ansible.builtin.import_role:
+        name: before_check
+      tags:
+        - before
+
+    # 設定変更
+    - name: Import configure
+      ansible.builtin.import_role:
+        name: configure
+
+    # 事後確認
+    - name: Import after_check
+      ansible.builtin.import_role:
+        name: after_check
+      tags:
+        - after
+
+    # 管理用（リセット）
+    - name: Import rest
+      ansible.builtin.import_role:
+        name: reset
+      tags:
+        - reset
+        - never
