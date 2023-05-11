@@ -1,2 +1,3 @@
 .vscode
 301_add_route/inventory/
+*.log
