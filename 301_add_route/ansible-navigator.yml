@@ -1,16 +1,19 @@
 ---
 ansible-navigator:
   execution-environment:
-    enabled: false
-    # enabled: true
-    image: quay.io/ansible/network-ee:latest
+    # enabled: false
+    enabled: true
+    image: ghcr.io/akira6592/ansible-ee
+    # image: quay.io/ansible/network-ee:latest
     pull:
       policy: missing
   mode: stdout
   ansible:
     inventory:
-      help: false
       entries:
         - inventory
   playbook-artifact:
     enable: false
+  logging:
+    append: false
+    level: critical

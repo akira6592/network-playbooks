@@ -17,10 +17,11 @@
     msg: "{{ res_show_ip_route.parsed }}"
 
 # 追加ルートがルーティングテーブルに存在すること
-- name: Assert esxits
+- name: Assert esxits (in show ip route)
   ansible.builtin.assert:
     that:
       - existing_prefix | length == 1
+    fail_msg: "{{ existing_prefix | to_json }}"
   vars:
     dest_network: "{{ dest | ansible.utils.ipv4('network') }}"
     dest_prefix: "{{ dest | ansible.utils.ipv4('prefix') }}"
@@ -51,7 +52,7 @@
 #     msg: "{{ res_show_runnning_config }}"
 
 # 追加ルートがコンフィグに存在すること
-- name: Assert esxits
+- name: Assert esxits (in running-config)
   ansible.builtin.assert:
     that:
       - config in res_show_runnning_config.stdout_lines[0]
