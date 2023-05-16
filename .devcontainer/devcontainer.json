@@ -3,32 +3,38 @@
 {
 	"name": "Ansilbe DinD",
 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-	"image": "mcr.microsoft.com/devcontainers/python:0-3.9",
+	"image": "mcr.microsoft.com/devcontainers/python:0-3.11",
+	// "image": "mcr.microsoft.com/devcontainers/base:ubuntu-22.04",
 	"features": {
-		"ghcr.io/devcontainers/features/docker-in-docker:2": {}
+		"ghcr.io/devcontainers/features/docker-in-docker:2": {},
+		// "ghcr.io/devcontainers/features/python:1": {
+		// 	"version": "3.11"
+		// }
 	},
-    
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
-
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
-
 	// Use 'postCreateCommand' to run commands after the container is created.
 	"postCreateCommand": "pip3 install --user ansible-navigator==3.2.0",
-	// "postCreateCommand": "pip3 install --user -r requirements.txt",
-
+	// "postCreateCommand": "pip3 install --user -r ${containerWorkspaceFolder}/requirements.txt",
 	// Configure tool-specific properties.
 	// "customizations": {},
 	"customizations": {
 		"vscode": {
 			"extensions": [
 				"redhat.ansible"
-			]
+			],
+			"settings": {
+				"ansible.executionEnvironment.enabled": true,
+				"ansible.executionEnvironment.image": "ghcr.io/akira6592/ansible-ee:latest",
+				"ansible.ansible.useFullyQualifiedCollectionNames": true,
+				"ansible.validation.lint.enabled": true,
+				"ansible.completion.provideModuleOptionAliases": false,
+				"ansible.completion.provideRedirectModules": false,
+			}
 		}
 	}
-
 	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
 	// "remoteUser": "root"
-
 }
